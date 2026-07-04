@@ -1,0 +1,374 @@
+<template>
+
+    <!-- ========================= PAGE ========================= -->
+
+    <div class="page">
+
+        <!-- ========================= HEADER ========================= -->
+
+        <div class="header">
+
+            <div class="header-left">
+
+                <lightning-icon
+                    icon-name="standard:employee"
+                    size="large"
+                    alternative-text="Employee">
+                </lightning-icon>
+
+                <div class="header-text">
+
+                    <h1>Employee Registration System</h1>
+
+                    <p>
+                        Learn Lightning Input Components & Event Handling in LWC
+                    </p>
+
+                </div>
+
+            </div>
+
+        </div>
+
+        <!-- ========================= MAIN LAYOUT ========================= -->
+
+        <div class="slds-grid slds-wrap slds-gutters main-layout">
+
+            <!-- ========================================================= -->
+            <!-- LEFT SECTION -->
+            <!-- ========================================================= -->
+
+            <div class="slds-col slds-size_1-of-1 slds-large-size_8-of-12">
+
+                <div class="custom-card">
+
+                    <!-- Card Header -->
+
+                    <div class="card-header">
+
+                        <lightning-icon
+                            icon-name="utility:form"
+                            size="small">
+                        </lightning-icon>
+
+                        <h2>Employee Registration Form</h2>
+
+                    </div>
+
+                    <!-- ================= FORM ================= -->
+
+                    <div class="slds-grid slds-wrap slds-gutters">
+
+                        <!-- Employee Name -->
+
+                        <div class="slds-col slds-size_1-of-1 slds-large-size_6-of-12">
+
+                            <lightning-input
+                                type="text"
+                                label="Employee Name"
+                                placeholder="Enter employee name"
+                                value={empName}
+                                onchange={handleName}>
+                            </lightning-input>
+
+                        </div>
+
+                        <!-- Email -->
+
+                        <div class="slds-col slds-size_1-of-1 slds-large-size_6-of-12">
+
+                            <lightning-input
+                                type="email"
+                                label="Email"
+                                placeholder="Enter email address"
+                                value={empEmail}
+                                onchange={handleEmailChange}>
+                            </lightning-input>
+
+                        </div>
+
+                        <!-- Phone -->
+
+                        <div class="slds-col slds-size_1-of-1 slds-large-size_6-of-12">
+
+                            <lightning-input
+                                type="tel"
+                                label="Phone Number"
+                                placeholder="Enter phone number"
+                                value={empPhone}
+                                onchange={handlePhone}>
+                            </lightning-input>
+
+                        </div>
+
+                        <!-- Salary -->
+
+                        <div class="slds-col slds-size_1-of-1 slds-large-size_6-of-12">
+
+                            <lightning-input
+                                type="number"
+                                label="Salary"
+                                placeholder="Enter salary"
+                                value={empSalary}
+                                onchange={handleSalary}>
+                            </lightning-input>
+
+                        </div>
+
+                        <!-- Joining Date -->
+
+                        <div class="slds-col slds-size_1-of-1 slds-large-size_6-of-12">
+
+                            <lightning-input
+                                type="date"
+                                label="Joining Date"
+                                value={empJoiningDate}
+                                onchange={handleDate}>
+                            </lightning-input>
+
+                        </div>
+
+                        <!-- Department -->
+
+                        <div class="slds-col slds-size_1-of-1 slds-large-size_6-of-12">
+
+                            <lightning-combobox
+                                label="Department"
+                                value={empDept}
+                                options={deptOptions}
+                                onchange={handleDepartment}>
+                            </lightning-combobox>
+
+                        </div>
+
+                        <!-- Address -->
+
+                        <div class="slds-col slds-size_1-of-1">
+
+                            <lightning-textarea
+                                label="Address"
+                                placeholder="Enter employee address"
+                                value={empAddress}
+                                onchange={handleAddress}>
+                            </lightning-textarea>
+
+                        </div>
+
+                        <!-- Checkbox -->
+
+                        <div class="slds-col slds-size_1-of-1 slds-large-size_6-of-12">
+
+                            <lightning-input
+                                type="checkbox"
+                                label="I Accept Company Policies"
+                                checked={isChecked}
+                                onchange={handleCheckbox}>
+                            </lightning-input>
+
+                        </div>
+
+                        <!-- Toggle -->
+
+                        <div class="slds-col slds-size_1-of-1 slds-large-size_6-of-12">
+
+                            <lightning-input
+                                type="toggle"
+                                label="Employee Active"
+                                checked={isActive}
+                                onchange={handleToggle}>
+                            </lightning-input>
+
+                        </div>
+
+                    </div>
+
+                    <!-- ================= BUTTONS ================= -->
+
+                    <div class="button-group">
+
+                        <lightning-button
+                            label="Save"
+                            variant="brand"
+                            icon-name="utility:save">
+                        </lightning-button>
+
+                        <lightning-button
+                            label="Reset"
+                            variant="neutral"
+                            icon-name="utility:refresh">
+                        </lightning-button>
+
+                        <lightning-button
+                            label="Delete"
+                            variant="destructive"
+                            icon-name="utility:delete">
+                        </lightning-button>
+
+                    </div>
+
+                </div>
+
+            </div>
+                        <!-- ========================================================= -->
+            <!-- RIGHT SECTION : EMPLOYEE LIVE PREVIEW -->
+            <!-- ========================================================= -->
+
+            <div class="slds-col slds-size_1-of-1 slds-large-size_4-of-12">
+
+                <div class="preview-card">
+
+                    <!-- Preview Header -->
+
+                    <div class="preview-header">
+
+                        <lightning-icon
+                            icon-name="utility:preview"
+                            size="small">
+                        </lightning-icon>
+
+                        <h2>Employee Live Preview</h2>
+
+                    </div>
+
+                    <!-- Employee Profile -->
+
+                    <div class="profile-section">
+
+                        <div class="avatar">
+
+                            <lightning-avatar
+                                fallback-icon-name="standard:user"
+                                size="x-large">
+                            </lightning-avatar>
+
+                        </div>
+
+                        <h3>{empName}</h3>
+
+                        <p>{empDept}</p>
+
+                    </div>
+
+                    <!-- Employee Details -->
+
+                    <div class="details">
+
+                        <div class="detail-item">
+
+                            <span class="label">Employee Name</span>
+
+                            <span class="value">{empName}</span>
+
+                        </div>
+
+                        <div class="detail-item">
+
+                            <span class="label">Email Address</span>
+
+                            <span class="value">{empEmail}</span>
+
+                        </div>
+
+                        <div class="detail-item">
+
+                            <span class="label">Phone Number</span>
+
+                            <span class="value">{empPhone}</span>
+
+                        </div>
+
+                        <div class="detail-item">
+
+                            <span class="label">Salary</span>
+
+                            <span class="value">₹ {empSalary}</span>
+
+                        </div>
+
+                        <div class="detail-item">
+
+                            <span class="label">Joining Date</span>
+
+                            <span class="value">{empJoiningDate}</span>
+
+                        </div>
+
+                        <div class="detail-item">
+
+                            <span class="label">Department</span>
+
+                            <span class="value">{empDept}</span>
+
+                        </div>
+
+                        <div class="detail-item">
+
+                            <span class="label">Address</span>
+
+                            <span class="value">{empAddress}</span>
+
+                        </div>
+
+                        <div class="detail-item">
+
+                            <span class="label">Policies</span>
+
+                            <template lwc:if={isChecked}>
+
+                                <span class="success-badge">
+
+                                    Accepted
+
+                                </span>
+
+                            </template>
+
+                            <template lwc:else>
+
+                                <span class="danger-badge">
+
+                                    Not Accepted
+
+                                </span>
+
+                            </template>
+
+                        </div>
+
+                        <div class="detail-item">
+
+                            <span class="label">Status</span>
+
+                            <template lwc:if={isActive}>
+
+                                <span class="active-badge">
+
+                                    Active
+
+                                </span>
+
+                            </template>
+
+                            <template lwc:else>
+
+                                <span class="inactive-badge">
+
+                                    Inactive
+
+                                </span>
+
+                            </template>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</template>

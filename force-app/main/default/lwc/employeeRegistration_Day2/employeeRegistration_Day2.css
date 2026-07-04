@@ -1,0 +1,399 @@
+/* ===========================================================
+   PAGE
+=========================================================== */
+
+.page{
+    background:#f4f6f9;
+    min-height:100vh;
+    padding:25px;
+}
+
+/* ===========================================================
+   HEADER
+=========================================================== */
+
+.header{
+
+    background:linear-gradient(90deg,#1565c0,#1e88e5);
+
+    padding:22px 30px;
+
+    border-radius:12px;
+
+    box-shadow:0 6px 16px rgba(0,0,0,.15);
+
+    margin-bottom:25px;
+
+}
+
+.header-left{
+
+    display:flex;
+
+    align-items:center;
+
+    gap:18px;
+
+}
+
+.header-text h1{
+
+    color:white;
+
+    font-size:30px;
+
+    font-weight:700;
+
+    margin:0;
+
+}
+
+.header-text p{
+
+    color:#eef5ff;
+
+    margin-top:5px;
+
+    font-size:15px;
+
+}
+
+/* ===========================================================
+   MAIN LAYOUT
+=========================================================== */
+
+.main-layout{
+
+    align-items:flex-start;
+
+}
+
+/* ===========================================================
+   COMMON CARD
+=========================================================== */
+
+.custom-card,
+.preview-card{
+
+    background:#ffffff;
+
+    border-radius:14px;
+
+    padding:24px;
+
+    border:1px solid #d8dde6;
+
+    box-shadow:0 8px 20px rgba(0,0,0,.08);
+
+}
+
+/* ===========================================================
+   CARD HEADER
+=========================================================== */
+
+.card-header,
+.preview-header{
+
+    display:flex;
+
+    align-items:center;
+
+    gap:10px;
+
+    margin-bottom:25px;
+
+    padding-bottom:15px;
+
+    border-bottom:1px solid #e8ecf3;
+
+}
+
+.card-header h2,
+.preview-header h2{
+
+    margin:0;
+
+    color:#16325c;
+
+    font-size:22px;
+
+    font-weight:700;
+
+}
+
+/* ===========================================================
+   FORM
+=========================================================== */
+
+lightning-input,
+lightning-combobox,
+lightning-textarea{
+
+    display:block;
+
+    margin-bottom:14px;
+
+}
+
+/* ===========================================================
+   BUTTONS
+=========================================================== */
+
+.button-group{
+
+    display:flex;
+
+    justify-content:center;
+
+    gap:15px;
+
+    margin-top:30px;
+
+}
+
+/* ===========================================================
+   PREVIEW CARD
+=========================================================== */
+
+.preview-card{
+
+    position:sticky;
+
+    top:20px;
+
+}
+
+/* ===========================================================
+   PROFILE
+=========================================================== */
+
+.profile-section{
+
+    background:#f5f9ff;
+
+    border-radius:12px;
+
+    padding:25px;
+
+    text-align:center;
+
+    margin-bottom:25px;
+
+}
+
+.avatar{
+
+    margin-bottom:15px;
+
+}
+
+.profile-section h3{
+
+    margin:10px 0 5px;
+
+    color:#1565c0;
+
+    font-size:24px;
+
+    font-weight:700;
+
+}
+
+.profile-section p{
+
+    color:#666;
+
+    margin:0;
+
+}
+
+/* ===========================================================
+   DETAILS
+=========================================================== */
+
+.details{
+
+    display:flex;
+
+    flex-direction:column;
+
+}
+
+.detail-item{
+
+    display:flex;
+
+    justify-content:space-between;
+
+    align-items:center;
+
+    padding:14px 0;
+
+    border-bottom:1px solid #edf1f5;
+
+}
+
+.detail-item:last-child{
+
+    border-bottom:none;
+
+}
+
+.label{
+
+    font-weight:600;
+
+    color:#444;
+
+}
+
+.value{
+
+    color:#1565c0;
+
+    font-weight:600;
+
+    text-align:right;
+
+    max-width:55%;
+
+    word-break:break-word;
+
+}
+
+/* ===========================================================
+   BADGES
+=========================================================== */
+
+.success-badge{
+
+    background:#dff6e5;
+
+    color:#2e844a;
+
+    padding:5px 14px;
+
+    border-radius:18px;
+
+    font-size:13px;
+
+    font-weight:700;
+
+}
+
+.danger-badge{
+
+    background:#fde7e9;
+
+    color:#ba0517;
+
+    padding:5px 14px;
+
+    border-radius:18px;
+
+    font-size:13px;
+
+    font-weight:700;
+
+}
+
+.active-badge{
+
+    background:#2e844a;
+
+    color:white;
+
+    padding:5px 16px;
+
+    border-radius:18px;
+
+    font-size:13px;
+
+    font-weight:700;
+
+}
+
+.inactive-badge{
+
+    background:#c23934;
+
+    color:white;
+
+    padding:5px 16px;
+
+    border-radius:18px;
+
+    font-size:13px;
+
+    font-weight:700;
+
+}
+
+/* ===========================================================
+   HOVER
+=========================================================== */
+
+.custom-card:hover,
+.preview-card:hover{
+
+    transform:translateY(-3px);
+
+    transition:.25s;
+
+    box-shadow:0 10px 24px rgba(0,0,0,.15);
+
+}
+
+/* ===========================================================
+   RESPONSIVE
+=========================================================== */
+
+@media(max-width:1024px){
+
+    .preview-card{
+
+        margin-top:20px;
+
+        position:relative;
+
+        top:0;
+
+    }
+
+}
+
+@media(max-width:768px){
+
+    .header-left{
+
+        flex-direction:column;
+
+        text-align:center;
+
+    }
+
+    .button-group{
+
+        flex-direction:column;
+
+    }
+
+    .detail-item{
+
+        flex-direction:column;
+
+        align-items:flex-start;
+
+        gap:6px;
+
+    }
+
+    .value{
+
+        max-width:100%;
+
+        text-align:left;
+
+    }
+
+}

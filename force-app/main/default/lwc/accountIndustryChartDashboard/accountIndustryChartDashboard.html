@@ -1,0 +1,17 @@
+<template>
+    <lightning-card title="CHART DEMO">
+        <div class="slds-p-around_medium">
+            <lightning-combobox
+                label="SELECT CHART"
+                value={chartType}
+                options={chartOptions}
+                onchange={handleChartChange}
+            >
+            </lightning-combobox>
+
+            <div style="height:500px">
+                <canvas class="chart"></canvas>
+            </div>
+        </div>
+    </lightning-card>
+</template>

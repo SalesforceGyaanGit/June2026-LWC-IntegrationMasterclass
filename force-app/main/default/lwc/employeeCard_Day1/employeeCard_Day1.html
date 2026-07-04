@@ -1,0 +1,41 @@
+<template>
+    <lightning-card  title="Employee Dashboard">
+        <div class="container">
+            <h2> WELCOME TO SALESFORCE GYAAN ACADEMY</h2>
+            <hr>
+            <P><strong> Name: </strong> {empName} </P>
+            <P><strong> Designation: </strong> {empDesignation}</P>
+            <P><strong> Department: </strong>{department}</P>
+            <P><strong> Experience: </strong>{experience}</P>
+            <P><strong> Project: </strong> {project}</P>
+            <hr>
+            
+            <div>
+                <lightning-button variant="brand" label="Active" title="Primary action" onclick={handleActive} class="slds-m-left_x-small"></lightning-button>    &nbsp;&nbsp;
+                <lightning-button variant="brand" label="On Leave" title="Primary action" onclick={handleOnLeave} class="slds-m-left_x-small"></lightning-button>    
+            </div>
+            
+            <hr>
+            
+            <div>
+            <h3 class="align"> Employee Status </h3>
+            <template lwc:if = {isActive}>
+                <div class="active">
+                    <strong>Employee is Active</strong>
+                </div>
+            </template>
+            <template lwc:elseif = {isOnLeave}>
+                <div class="leave">
+                    <strong>Employee is on Leave</strong>
+                </div>
+            </template>
+            <template lwc:else>
+                <div class="inactive">
+                    <strong>Employee is Inactive</strong>
+                </div>
+            </template>
+        </div>
+        </div>
+        
+    </lightning-card>
+</template>

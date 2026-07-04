@@ -1,0 +1,31 @@
+.container{
+    padding: 15px;
+}
+h2{
+    color: red;
+    
+}
+p{
+    margin: 8px 0;
+    font-size: 15px;
+}
+h3{
+    margin-top:20px;
+    color: blue;
+}
+
+.active{
+    background-color: grey;
+    color: green;
+}
+.leave{
+    background-color: grey;
+    color: red;
+}
+.inactive{
+    background-color: grey;
+    color:blue;
+}
+.align{
+    text-align: center;
+}
