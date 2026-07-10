@@ -1,0 +1,93 @@
+<template>
+    <lightning-card title="Employee Directory" icon-name="standard:employee">
+
+        <div class="slds-p-around_medium">
+            <div class="slds-grid slds-grid_align-spread slds-grid_vertical-align-end">
+                <div class="slds-size_1-of-3">
+                    <lightning-combobox
+                    label="Choose Department"
+                    value={selectedDept}
+                    options={departmentOptions}
+                    onchange={handleDepartmentChange}
+                    >
+                    </lightning-combobox>
+                </div>
+                <div>
+                     <lightning-button-icon icon-name="utility:adduser" alternative-text="Add Employee" class="slds-m-left_xx-small" title="Add Employee" onclick={handleForm}></lightning-button-icon>
+                </div>
+            </div>
+            
+        </div>
+       
+        <div class="slds-p-horizontal_medium slds-p-bottom_small">
+            
+            <template lwc:if ={employeeRecs}>
+            <div>
+                <lightning-datatable
+                    key-field="Id"
+                    data={employeeRecs}
+                    columns={tableColumns}
+                    hide-checkbox-column
+                    show-row-number-column
+                >
+                </lightning-datatable>
+            </div>
+            </template>
+
+            <!-- ERROR Condition-->
+            <template lwc:elseif={employeeRecs.error}>
+                <div>
+                    <p><i> Unable to Load Employee Records</i></p>
+                </div>
+            </template>
+
+            <template lwc:else>
+                <div class="slds-is-relative slds-p-vertical_large">
+                    <lightning-spinner alternative-text="Loading Employees" size="medium"></lightning-spinner>
+                </div>
+            </template>
+        </div>
+
+        <!-- Employee Model Pop-up form -->
+        <template if:true={showForm}>
+            <section role="dialog" tabindex="-1" class="slds-modal slds-fade-in-open">
+                <div class="slds-modal__container">
+                    <header class="slds-modal__header">
+                        <h2 class="slds-text-heading_medium">
+                            Add New Employee
+                        </h2>
+                    </header>
+                    <div>
+                        <lightning-input label="Employee Name" name="Employee_Name__c" required onchange={handleInputChange}></lightning-input>
+                        <lightning-combobox
+                                label="Department" name="Employee_Department__c"
+                                options={departmentOptions} required
+                                onchange={handleInputChange}>
+                        </lightning-combobox>
+                        <lightning-input
+                                type="tel"
+                                label="Phone Number"
+                                placeholder="Enter Format as 353-362-9800"
+                                name = "Employee_Phone__c"
+                                value={empPhone}
+                                onchange={handleInputChange}>
+                        </lightning-input>
+                        <lightning-input
+                                type="email"
+                                label="Email"
+                                placeholder="Enter email address"
+                                name = "Employee_Email__c"
+                                value={empEmail}
+                                onchange={handleInputChange}>
+                            </lightning-input>
+                    </div>
+                    <footer class="slds-modal__footer">
+                        <lightning-button label="Cancel" onclick={handleCloseModal} variant="Neutral"></lightning-button> &nbsp;&nbsp;
+                        <lightning-button label="Create" onclick={handleCreateEmployeeRecord} variant="Brand"></lightning-button>
+                    </footer>
+                </div>
+            </section>
+        </template> 
+        
+    </lightning-card>
+</template>
