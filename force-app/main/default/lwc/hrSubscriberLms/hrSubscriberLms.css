@@ -1,0 +1,189 @@
+:host{
+
+    display:block;
+
+    background:#f4f6f9;
+
+}
+
+/*==========================================
+                HEADER
+==========================================*/
+
+.subscriber-header{
+
+    display:flex;
+
+    align-items:center;
+
+    gap:18px;
+
+    padding:20px 24px;
+
+    border-radius:12px;
+
+    background:linear-gradient(135deg,#7F3FBF,#5E35B1);
+
+    color:white;
+
+    box-shadow:0 4px 12px rgba(0,0,0,.12);
+
+}
+
+.header-icon{
+
+    width:60px;
+
+    height:60px;
+
+    border-radius:50%;
+
+    display:flex;
+
+    justify-content:center;
+
+    align-items:center;
+
+    background:rgba(255,255,255,.18);
+
+    font-size:30px;
+
+}
+
+.subscriber-header h1{
+
+    margin:0;
+
+    font-size:24px;
+
+    font-weight:700;
+
+}
+
+.subscriber-header p{
+
+    margin-top:6px;
+
+    opacity:.95;
+
+    font-size:14px;
+
+}
+
+/*==========================================
+                CARD
+==========================================*/
+
+.subscriber-card{
+
+    margin:22px;
+
+    padding:22px;
+
+    background:white;
+
+    border-radius:12px;
+
+    box-shadow:0 3px 10px rgba(0,0,0,.08);
+
+}
+
+.subscriber-card h2{
+
+    margin:0;
+
+    color:#16325c;
+
+    font-size:20px;
+
+}
+
+.subscriber-card p{
+
+    margin:8px 0 22px;
+
+    color:#666;
+
+    line-height:1.6;
+
+}
+
+/*==========================================
+            STATUS GRID
+==========================================*/
+
+.status-grid{
+
+    display:grid;
+
+    grid-template-columns:1fr 1fr;
+
+    gap:20px;
+
+}
+
+.status-box{
+
+    background:#f7f9fb;
+
+    border-left:5px solid #7F3FBF;
+
+    border-radius:10px;
+
+    padding:20px;
+
+    transition:.25s;
+
+}
+
+.status-box:hover{
+
+    transform:translateY(-4px);
+
+    box-shadow:0 6px 14px rgba(0,0,0,.12);
+
+}
+
+.status-label{
+
+    color:#666;
+
+    font-size:13px;
+
+    font-weight:600;
+
+}
+
+.status-value{
+
+    margin-top:10px;
+
+    color:#5E35B1;
+
+    font-size:22px;
+
+    font-weight:700;
+
+}
+
+/*==========================================
+            RESPONSIVE
+==========================================*/
+
+@media(max-width:768px){
+
+    .subscriber-header{
+
+        flex-direction:column;
+
+        text-align:center;
+
+    }
+
+    .status-grid{
+
+        grid-template-columns:1fr;
+
+    }
+
+}

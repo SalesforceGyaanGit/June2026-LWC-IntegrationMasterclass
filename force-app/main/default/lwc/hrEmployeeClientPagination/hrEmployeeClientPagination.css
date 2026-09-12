@@ -1,0 +1,326 @@
+:host{
+    display:block;
+    background:#f4f6f9;
+}
+
+/*=================================================
+                    HEADER
+=================================================*/
+
+.employee-header{
+
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+
+    background:linear-gradient(135deg,#0176D3,#0B5CAB);
+
+    color:#fff;
+
+    padding:20px 28px;
+
+    border-radius:12px;
+
+    margin:18px;
+
+}
+
+.employee-header h1{
+
+    margin:0;
+
+    font-size:28px;
+
+    font-weight:700;
+
+}
+
+.employee-header p{
+
+    margin-top:8px;
+
+    font-size:14px;
+
+    opacity:.95;
+
+}
+
+
+/*=================================================
+                FILTER CARD
+=================================================*/
+
+.filter-card{
+
+    background:#fff;
+
+    margin:18px;
+
+    padding:20px;
+
+    border-radius:12px;
+
+    box-shadow:0 2px 8px rgba(0,0,0,.08);
+
+}
+
+.section-title{
+
+    font-size:20px;
+
+    font-weight:700;
+
+    color:#16325c;
+
+}
+
+.section-subtitle{
+
+    margin-top:5px;
+
+    margin-bottom:20px;
+
+    color:#666;
+
+    font-size:13px;
+
+}
+
+.filter-grid{
+
+    display:grid;
+
+    grid-template-columns:1fr 2fr;
+
+    gap:20px;
+
+    align-items:end;
+
+}
+
+
+/*=================================================
+                TABLE CARD
+=================================================*/
+
+.table-card{
+
+    background:#fff;
+
+    margin:18px;
+
+    border-radius:12px;
+
+    padding:20px;
+
+    box-shadow:0 2px 8px rgba(0,0,0,.08);
+
+}
+
+.table-header{
+
+    display:flex;
+
+    justify-content:space-between;
+
+    align-items:center;
+
+    margin-bottom:18px;
+
+}
+
+.table-header h2{
+
+    margin:0;
+
+    color:#16325c;
+
+    font-size:22px;
+
+    font-weight:700;
+
+}
+
+.table-header p{
+
+    margin-top:5px;
+
+    color:#666;
+
+}
+
+
+/*=================================================
+                PAGINATION
+=================================================*/
+
+.pagination-bar{
+
+    display:flex;
+
+    justify-content:space-between;
+
+    align-items:center;
+
+    margin-top:20px;
+
+    padding-top:20px;
+
+    border-top:1px solid #ddd;
+
+}
+
+.pagination-summary{
+
+    display:flex;
+
+    gap:18px;
+
+}
+
+.summary-card{
+
+    background:#f7f9fb;
+
+    border-radius:10px;
+
+    padding:12px 20px;
+
+    min-width:120px;
+
+    text-align:center;
+
+    border:1px solid #e4e7eb;
+
+}
+
+.summary-number{
+
+    display:block;
+
+    font-size:22px;
+
+    font-weight:700;
+
+    color:#0176D3;
+
+}
+
+.summary-label{
+
+    display:block;
+
+    margin-top:4px;
+
+    font-size:12px;
+
+    color:#666;
+
+}
+
+
+/*=================================================
+                    SPINNER
+=================================================*/
+
+.spinner-container{
+
+    padding:50px;
+
+    text-align:center;
+
+}
+
+
+/*=================================================
+                    ERROR
+=================================================*/
+
+.error-state{
+
+    text-align:center;
+
+    color:#ba0517;
+
+    padding:50px;
+
+    font-weight:600;
+
+}
+
+
+/*=================================================
+                    MODAL
+=================================================*/
+
+.modal-grid{
+
+    display:grid;
+
+    grid-template-columns:1fr 1fr;
+
+    gap:18px;
+
+}
+
+
+/*=================================================
+                MODAL FOOTER
+=================================================*/
+
+.slds-modal__footer{
+
+    display:flex;
+
+    justify-content:flex-end;
+
+    align-items:center;
+
+}
+
+
+/*=================================================
+                RESPONSIVE
+=================================================*/
+
+@media(max-width:900px){
+
+    .employee-header{
+
+        flex-direction:column;
+
+        gap:15px;
+
+        text-align:center;
+
+    }
+
+    .filter-grid{
+
+        grid-template-columns:1fr;
+
+    }
+
+    .modal-grid{
+
+        grid-template-columns:1fr;
+
+    }
+
+    .pagination-bar{
+
+        flex-direction:column;
+
+        gap:18px;
+
+    }
+
+    .pagination-summary{
+
+        flex-wrap:wrap;
+
+        justify-content:center;
+
+    }
+
+}

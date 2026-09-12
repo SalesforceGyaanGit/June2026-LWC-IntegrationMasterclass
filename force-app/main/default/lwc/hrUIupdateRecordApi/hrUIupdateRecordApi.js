@@ -1,0 +1,132 @@
+import { LightningElement, wire } from 'lwc';
+import NAME_FIELD from '@salesforce/schema/Employee_Detail__c.Employee_Name__c';
+import EMAIL_FIELD from '@salesforce/schema/Employee_Detail__c.Employee_Email__c';
+import PHONE_FIELD from '@salesforce/schema/Employee_Detail__c.Employee_Phone__c';
+import DEPARTMENT_FIELD from '@salesforce/schema/Employee_Detail__c.Employee_Department__c';
+import DESIGNATION_FIELD from '@salesforce/schema/Employee_Detail__c.Designation__c';
+import SALARY_FIELD from '@salesforce/schema/Employee_Detail__c.Employee_Salary__c';
+import {getRecord,updateRecord} from 'lightning/uiRecordApi';
+import {ShowToastEvent} from 'lightning/platformShowToastEvent';
+
+export default class HrUIupdateRecordApi extends LightningElement {
+recordId;
+name='';
+email='';
+phone='';
+department='';
+designation='';
+salary;
+
+handleRecordSelection(event){        
+    this.recordId = event.detail.recordId;
+    console.log('handleRecordSelection is called with record Id == ',this.recordId);
+}
+
+@wire(getRecord,{
+    recordId: '$recordId',
+    fields:[
+        NAME_FIELD,
+        EMAIL_FIELD,
+        PHONE_FIELD,
+        DEPARTMENT_FIELD,
+        DESIGNATION_FIELD,
+        SALARY_FIELD
+    ]
+})
+employeeHandler({data,error}){
+    if(data){
+        console.log('Data is present');
+        this.name=data.fields.Employee_Name__c.value;
+        this.email=data.fields.Employee_Email__c.value;
+        this.phone=data.fields.Employee_Phone__c.value;
+        this.department=data.fields.Employee_Department__c.value;
+        this.designation=data.fields.Designation__c.value;
+        this.salary=data.fields.Employee_Salary__c.value;
+
+    }
+    if(error){
+        console.log('Error Found');
+    }
+}
+
+handleChange(event){
+    console.log('Handle Change is called');
+
+    const field = event.target.dataset.field; 
+    console.log('field is == '+field);
+
+    switch(field){
+        case 'Employee_Name__c':
+        this.name = event.target.value;   //sagar
+        break;
+        
+        case 'MyEmail__c':
+        this.email = event.target.value;
+        break;
+
+        case 'Employee_Phone__c':
+        this.phone = event.target.value;
+        break;
+
+        case 'Department__c':
+        this.department = event.target.value;
+        break;
+
+        case 'Designation__c':
+        this.designation = event.target.value;
+        break;
+
+        case 'Salary__c':
+        this.salary = event.target.value;
+        break;
+    }        
+}
+
+updateEmployee(){
+    console.log('Update Employee button is clicked');
+    const fields={};
+    fields.Id = this.recordId;
+    fields[NAME_FIELD.fieldApiName] = this.name;
+    fields[EMAIL_FIELD.fieldApiName] = this.email;
+    fields[PHONE_FIELD.fieldApiName] = this.phone;
+    fields[DEPARTMENT_FIELD.fieldApiName] = this.department;
+    fields[DESIGNATION_FIELD.fieldApiName] = this.designation;
+    fields[SALARY_FIELD.fieldApiName] = this.salary;
+
+    const recordInput={
+        fields:fields
+    };
+
+    updateRecord(recordInput)
+        .then(result=>{
+            this.dispatchEvent(
+                new ShowToastEvent({
+                    title:'Record Updated', message:'Employee updated successfully.',variant:'success'
+                    })
+                );
+                console.log('Created Update Id is == ',result.id);
+                this.resetForm();
+                })
+                .catch(error=>{
+                    console.log('Error is == ',error.body.message);
+                    this.dispatchEvent(
+                        new ShowToastEvent({
+                            title:'Insert Failed', message:'error.body.message',variant:'error'
+    
+                        })
+                    );
+                })
+
+    }
+
+    resetForm(){
+        //this.recordId = null;
+        this.name='';
+        this.email='';
+        this.phone='';
+        this.department='';
+        this.designation='';
+        this.salary=null;
+    }
+
+}

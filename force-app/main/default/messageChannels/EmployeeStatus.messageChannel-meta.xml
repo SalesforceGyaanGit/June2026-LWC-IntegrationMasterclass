@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<LightningMessageChannel xmlns="http://soap.sforce.com/2006/04/metadata">
+    <masterLabel>Employee Status</masterLabel>
+    <isExposed>true</isExposed>
+    <description>Employee Status Communication Channel</description>
+
+    <lightningMessageFields>
+        <fieldName>employeeName</fieldName>
+        <description>Employee Name</description>
+    </lightningMessageFields>
+    <lightningMessageFields>
+        <fieldName>status</fieldName>
+        <description>Employee Status</description>
+    </lightningMessageFields>
+</LightningMessageChannel>

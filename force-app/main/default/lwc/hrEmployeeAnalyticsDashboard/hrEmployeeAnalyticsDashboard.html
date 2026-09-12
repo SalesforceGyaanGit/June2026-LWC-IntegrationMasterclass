@@ -1,0 +1,224 @@
+<template>
+
+    <lightning-card>
+
+        <!--================ DASHBOARD HEADER =================-->
+
+        <div class="dashboard-header">
+
+            <div class="header-icon">
+                📊
+            </div>
+
+            <div>
+
+                <h1>Employee Analytics Dashboard</h1>
+
+                <p>
+
+                    Visualize employee insights using
+
+                    <span class="highlight">Chart.js</span>
+
+                    and analyze department-wise distribution with
+                    interactive dashboards.
+
+                </p>
+
+            </div>
+
+        </div>
+
+
+        <!--================ KPI CARDS =================-->
+
+        <div class="kpi-grid">
+
+            <div class="kpi-card">
+
+                <div class="kpi-icon">👥</div>
+
+                <h2>{totalEmployees}</h2>
+
+                <span>Total Employees</span>
+
+            </div>
+
+            <div class="kpi-card">
+
+                <div class="kpi-icon">🏢</div>
+
+                <h2>{departmentCount}</h2>
+
+                <span>Departments</span>
+
+            </div>
+
+            <div class="kpi-card">
+
+                <div class="kpi-icon">📈</div>
+
+                <h2>{selectedChart}</h2>
+
+                <span>Current Chart</span>
+
+            </div>
+
+        </div>
+
+
+        <!--================ CONTROL PANEL =================-->
+
+        <div class="control-card">
+
+            <div class="section-heading">
+
+                <h2>Dashboard Controls</h2>
+
+                <p>
+
+                    Select a visualization type to analyze employee
+                    distribution.
+
+                </p>
+
+            </div>
+
+            <div class="slds-grid slds-wrap slds-gutters">
+
+                <div class="slds-col slds-size_1-of-1 slds-large-size_1-of-3">
+
+                    <lightning-combobox
+
+                        label="Select Chart Type"
+
+                        value={selectedChart}
+
+                        options={chartOptions}
+
+                        onchange={handleChartChange}>
+
+                    </lightning-combobox>
+
+                </div>
+
+            </div>
+
+        </div>
+		        <!--================ CHART DISPLAY =================-->
+
+        <div class="chart-card">
+
+            <div class="section-heading">
+
+                <h2>Employee Distribution Analytics</h2>
+
+                <p>
+
+                    Explore employee data visually using different chart
+                    types and gain meaningful business insights.
+
+                </p>
+
+            </div>
+
+            <div class="chart-container">
+
+                <canvas class="chart"></canvas>
+
+            </div>
+
+        </div>
+
+
+        <!--================ DASHBOARD INSIGHTS =================-->
+
+        <div class="insight-grid">
+
+            <div class="insight-card">
+
+                <div class="insight-icon">
+                    📊
+                </div>
+
+                <h3>Visualization</h3>
+
+                <p>
+
+                    Multiple chart types help analyze employee data from
+                    different perspectives.
+
+                </p>
+
+            </div>
+
+            <div class="insight-card">
+
+                <div class="insight-icon">
+                    📈
+                </div>
+
+                <h3>Business Insights</h3>
+
+                <p>
+
+                    Identify department distribution and workforce trends
+                    instantly.
+
+                </p>
+
+            </div>
+
+            <div class="insight-card">
+
+                <div class="insight-icon">
+                    ⚡
+                </div>
+
+                <h3>Interactive Dashboard</h3>
+
+                <p>
+
+                    Built using LWC, Apex and Chart.js for real-time
+                    visualization.
+
+                </p>
+
+            </div>
+
+        </div>
+
+
+        <!--================ FOOTER =================-->
+
+        <div class="dashboard-footer">
+
+            <div class="footer-item">
+
+                <span>📊 Chart Library</span>
+
+                <strong>Chart.js</strong>
+
+            </div>
+
+            <div class="footer-item">
+
+                <span>⚡ Backend</span>
+
+                <strong>Apex Controller</strong>
+
+            </div>
+
+            <div class="footer-item">
+
+                <span>📈 Selected Chart</span>
+
+                <strong>{selectedChart}</strong>
+
+            </div>
+
+        </div>
+
+    </lightning-card>
+
+</template>

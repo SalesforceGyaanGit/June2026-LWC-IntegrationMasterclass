@@ -1,0 +1,446 @@
+<template>
+
+    <lightning-card>
+
+        <!-- ================= HEADER ================= -->
+
+        <div class="delete-header">
+
+            <div class="header-icon">
+                🗑
+            </div>
+
+            <div>
+
+                <h1>Lightning UI Record API Playground</h1>
+
+                <p>
+
+                    Permanently remove Salesforce records using
+
+                    <span class="highlight">deleteRecord()</span>
+
+                    without writing
+
+                    <span class="highlight">Apex</span>.
+
+                </p>
+
+            </div>
+
+        </div>
+
+        <!-- ================= FEATURE CARDS ================= -->
+
+        <div class="feature-grid">
+
+            <div class="feature-card">
+
+                <div class="feature-icon">
+                    🔍
+                </div>
+
+                <h3>Search Record</h3>
+
+                <p>
+                    Search and select the employee you want to delete.
+                </p>
+
+            </div>
+
+            <div class="feature-card">
+
+                <div class="feature-icon">
+                    👀
+                </div>
+
+                <h3>Review Details</h3>
+
+                <p>
+                    Verify employee information before performing the delete operation.
+                </p>
+
+            </div>
+
+            <div class="feature-card">
+
+                <div class="feature-icon">
+                    🗑
+                </div>
+
+                <h3>Delete Record</h3>
+
+                <p>
+                    Permanently remove the selected employee record.
+                </p>
+
+            </div>
+
+        </div>
+
+        <!-- ================= SEARCH CARD ================= -->
+
+        <div class="search-card">
+
+            <div class="section-heading">
+
+                <h2>Employee Lookup</h2>
+
+                <p>
+
+                    Search an employee record to review its details before deletion.
+
+                </p>
+
+            </div>
+
+            <lightning-record-picker
+
+                label="Search Employee"
+
+                placeholder="Search Employee"
+
+                object-api-name="Employee_Detail__c"
+
+                onchange={handleRecordSelection}>
+
+            </lightning-record-picker>
+
+        </div>
+
+        <!-- ================= EMPLOYEE DETAILS ================= -->
+
+        <template if:true={recordId}>
+
+            <div class="details-card">
+
+                <div class="section-heading">
+
+                    <h2>Employee Information</h2>
+
+                    <p>
+
+                        Carefully review the selected employee details.
+
+                    </p>
+
+                </div>
+
+                <div class="detail-grid">
+
+                    <div class="detail-item">
+
+                        <span>Employee Name</span>
+
+                        <strong>{name}</strong>
+
+                    </div>
+
+                    <div class="detail-item">
+
+                        <span>Email Address</span>
+
+                        <strong>{email}</strong>
+
+                    </div>
+
+                    <div class="detail-item">
+
+                        <span>Phone Number</span>
+
+                        <strong>{phone}</strong>
+
+                    </div>
+
+                    <div class="detail-item">
+
+                        <span>Department</span>
+
+                        <strong>{department}</strong>
+
+                    </div>
+
+                    <div class="detail-item">
+
+                        <span>Designation</span>
+
+                        <strong>{designation}</strong>
+
+                    </div>
+
+                    <div class="detail-item">
+
+                        <span>Salary</span>
+
+                        <strong>{salary}</strong>
+
+                    </div>
+
+                </div>
+
+                <!-- ================= DANGER ZONE ================= -->
+
+                <div class="danger-card">
+
+                    <div class="danger-icon">
+
+                        ⚠️
+
+                    </div>
+
+                    <div>
+
+                        <h2>Danger Zone</h2>
+
+                        <p>
+
+                            This action permanently deletes the selected employee
+                            record and cannot be undone.
+
+                        </p>
+
+                    </div>
+
+                </div>
+
+                <!-- ================= ACTION BUTTONS ================= -->
+
+                <div class="button-section">
+
+                    <lightning-button
+
+                        label="Delete Employee"
+
+                        variant="destructive"
+
+                        icon-name="utility:delete"
+
+                        onclick={deleteEmployee}
+
+                        class="delete-btn">
+
+                    </lightning-button>
+
+                    <lightning-button
+
+                        label="Reset"
+
+                        variant="neutral"
+
+                        icon-name="utility:refresh"
+
+                        onclick={resetForm}
+
+                        class="slds-m-left_small">
+
+                    </lightning-button>
+
+                </div>
+
+            </div>
+
+        </template>
+		        <!--================ EMPTY STATE =================-->
+
+        <template if:false={recordId}>
+
+            <div class="empty-state">
+
+                <div class="empty-icon">
+                    🔍
+                </div>
+
+                <h2>No Employee Selected</h2>
+
+                <p>
+
+                    Search and select an employee to review the details
+                    before performing the delete operation.
+
+                </p>
+
+            </div>
+
+        </template>
+
+
+        <!--================ DELETE CONFIRMATION MODAL =================-->
+
+        <template if:true={showDeleteModal}>
+
+            <section
+                role="dialog"
+                tabindex="-1"
+                class="slds-modal slds-fade-in-open">
+
+                <div class="slds-modal__container">
+
+                    <!-- Modal Header -->
+
+                    <header class="slds-modal__header delete-modal-header">
+
+                        <h2>
+
+                            🗑 Delete Employee
+
+                        </h2>
+
+                        <p>
+
+                            Please review the employee details before
+                            permanently deleting this record.
+
+                        </p>
+
+                    </header>
+
+
+                    <!-- Modal Body -->
+
+                    <div class="slds-modal__content slds-p-around_large">
+
+                        <div class="confirmation-card">
+
+                            <div class="confirm-grid">
+
+                                <div class="confirm-item">
+
+                                    <span>Employee Name</span>
+
+                                    <strong>{name}</strong>
+
+                                </div>
+
+                                <div class="confirm-item">
+
+                                    <span>Email</span>
+
+                                    <strong>{email}</strong>
+
+                                </div>
+
+                                <div class="confirm-item">
+
+                                    <span>Phone</span>
+
+                                    <strong>{phone}</strong>
+
+                                </div>
+
+                                <div class="confirm-item">
+
+                                    <span>Department</span>
+
+                                    <strong>{department}</strong>
+
+                                </div>
+
+                                <div class="confirm-item">
+
+                                    <span>Designation</span>
+
+                                    <strong>{designation}</strong>
+
+                                </div>
+
+                                <div class="confirm-item">
+
+                                    <span>Salary</span>
+
+                                    <strong>{salary}</strong>
+
+                                </div>
+
+                            </div>
+
+                        </div>
+
+                        <div class="warning-box">
+
+                            <strong>⚠ Warning</strong>
+
+                            <p>
+
+                                This operation permanently deletes the selected
+                                employee record. Once deleted, it cannot be
+                                recovered.
+
+                            </p>
+
+                        </div>
+
+                    </div>
+
+
+                    <!-- Modal Footer -->
+
+                    <footer class="slds-modal__footer">
+
+                        <lightning-button
+
+                            label="Cancel"
+
+                            variant="neutral"
+
+                            onclick={closeDeleteModal}>
+
+                        </lightning-button>
+
+                        <lightning-button
+
+                            label="Delete Permanently"
+
+                            variant="destructive"
+
+                            icon-name="utility:delete"
+
+                            onclick={deleteEmployee}
+
+                            class="slds-m-left_small">
+
+                        </lightning-button>
+
+                    </footer>
+
+                </div>
+
+            </section>
+
+            <div class="slds-backdrop slds-backdrop_open"></div>
+
+        </template>
+
+
+        <!--================ FOOTER =================-->
+
+        <div class="info-footer">
+
+            <div class="info-item">
+
+                <span>⚡ API Used</span>
+
+                <strong>deleteRecord()</strong>
+
+            </div>
+
+            <div class="info-item">
+
+                <span>📦 Module</span>
+
+                <strong>lightning/uiRecordApi</strong>
+
+            </div>
+
+            <div class="info-item">
+
+                <span>🗑 Operation</span>
+
+                <strong>Permanent Delete</strong>
+
+            </div>
+
+        </div>
+
+    </lightning-card>
+
+</template>

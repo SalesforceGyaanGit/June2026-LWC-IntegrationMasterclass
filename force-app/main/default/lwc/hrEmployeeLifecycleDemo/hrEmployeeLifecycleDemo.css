@@ -1,0 +1,211 @@
+:host{
+
+    display:block;
+
+    background:#f4f6f9;
+
+}
+
+/*=========================================
+            HEADER
+=========================================*/
+
+.lifecycle-header{
+
+    display:flex;
+
+    align-items:center;
+
+    gap:18px;
+
+    padding:20px 24px;
+
+    border-radius:12px;
+
+    background:linear-gradient(135deg,#E67E22,#D35400);
+
+    color:white;
+
+    box-shadow:0 4px 12px rgba(0,0,0,.12);
+
+}
+
+.header-icon{
+
+    width:60px;
+
+    height:60px;
+
+    border-radius:50%;
+
+    display:flex;
+
+    justify-content:center;
+
+    align-items:center;
+
+    font-size:30px;
+
+    background:rgba(255,255,255,.18);
+
+}
+
+.lifecycle-header h1{
+
+    margin:0;
+
+    font-size:24px;
+
+    font-weight:700;
+
+}
+
+.lifecycle-header p{
+
+    margin-top:6px;
+
+    opacity:.95;
+
+}
+
+/*=========================================
+            CONTROL CARD
+=========================================*/
+
+.control-card{
+
+    margin:22px;
+
+    padding:22px;
+
+    background:white;
+
+    border-radius:12px;
+
+    box-shadow:0 3px 10px rgba(0,0,0,.08);
+
+}
+
+.control-card h2{
+
+    margin:0;
+
+    color:#16325c;
+
+}
+
+.control-card p{
+
+    margin:10px 0 24px;
+
+    color:#666;
+
+    line-height:1.6;
+
+}
+
+.button-section{
+
+    text-align:center;
+
+}
+
+/*=========================================
+            STATUS
+=========================================*/
+
+.status-card{
+
+    margin:22px;
+
+    padding:18px 22px;
+
+    background:#fff8f2;
+
+    border-left:5px solid #E67E22;
+
+    border-radius:10px;
+
+    display:flex;
+
+    justify-content:space-between;
+
+    align-items:center;
+
+}
+
+.status-label{
+
+    font-weight:600;
+
+    color:#666;
+
+}
+
+.status-value{
+
+    font-size:22px;
+
+    font-weight:700;
+
+    color:#D35400;
+
+}
+
+/*=========================================
+            DEMO CARD
+=========================================*/
+
+.demo-card{
+
+    margin:22px;
+
+    padding:22px;
+
+    background:white;
+
+    border-radius:12px;
+
+    box-shadow:0 3px 10px rgba(0,0,0,.08);
+
+}
+
+.demo-card h2{
+
+    margin:0;
+
+    color:#16325c;
+
+}
+
+.demo-card p{
+
+    margin:8px 0 20px;
+
+    color:#666;
+
+}
+
+/*=========================================
+            RESPONSIVE
+=========================================*/
+
+@media(max-width:768px){
+
+    .lifecycle-header{
+
+        flex-direction:column;
+
+        text-align:center;
+
+    }
+
+    .status-card{
+
+        flex-direction:column;
+
+        gap:10px;
+
+    }
+
+}

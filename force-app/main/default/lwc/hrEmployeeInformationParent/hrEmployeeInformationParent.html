@@ -1,0 +1,103 @@
+<template>
+
+    <lightning-card>
+
+        <!-- Parent Header -->
+
+        <div class="parent-header">
+
+            <div class="header-icon">
+                👨
+            </div>
+
+            <div>
+
+                <h1>Parent Component</h1>
+
+                <p>
+                    HR Employee Information
+                </p>
+
+            </div>
+
+        </div>
+
+
+        <!-- Parent Information -->
+
+        <div class="info-card">
+
+            <div class="info-row">
+
+                <span class="label">
+                    Company Name
+                </span>
+
+                <span class="value">
+                    {parentCompanyName}
+                </span>
+
+            </div>
+
+        </div>
+
+
+        <!-- Description -->
+
+        <div class="instruction-box">
+
+            <h3>Component Communication Demo</h3>
+
+            <p>
+                Click the button below to invoke a JavaScript method in the Child Component.
+                This demonstrates <strong>Parent ➜ Child communication</strong> using
+                <strong>@api</strong>.
+            </p>
+
+        </div>
+
+
+        <!-- Action Button -->
+
+        <div class="button-section">
+
+            <lightning-button
+                label="Update Child Message"
+                icon-name="utility:refresh"
+                variant="brand"
+                onclick={handleUpdate}>
+            </lightning-button>
+
+        </div>
+
+
+        <!-- Child Component -->
+
+        <div class="child-card">
+
+            <h2>Child Component Preview</h2>
+
+            <c-hr-employee-card-child
+                child-company-name={parentCompanyName}>
+            </c-hr-employee-card-child>
+
+        </div>
+
+
+        <!-- Debug Section -->
+
+        <div class="property-card">
+
+            <span class="label">
+                Test Property
+            </span>
+
+            <span class="value">
+                {testProperty}
+            </span>
+
+        </div>
+
+    </lightning-card>
+
+</template>

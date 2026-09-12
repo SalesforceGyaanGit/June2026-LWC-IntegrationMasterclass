@@ -1,0 +1,80 @@
+<template>
+
+    <lightning-card>
+
+        <!-- ================= HEADER ================= -->
+
+        <div class="subscriber-header">
+
+            <div class="header-icon">
+                📥
+            </div>
+
+            <div>
+
+                <h1>Leave Status Subscriber</h1>
+
+                <p>
+                    Receive live employee status updates published through
+                    Lightning Message Service (LMS).
+                </p>
+
+            </div>
+
+        </div>
+
+
+        <!-- ================= STATUS CARD ================= -->
+
+        <div class="subscriber-card">
+
+            <h2>Live Employee Updates</h2>
+
+            <p>
+                This component automatically listens to LMS messages and displays
+                the latest employee status.
+            </p>
+
+
+            <div class="status-grid">
+
+                <div class="status-box">
+
+                    <div class="status-label">
+
+                        👤 Employee Name
+
+                    </div>
+
+                    <div class="status-value">
+
+                        {employeeName}
+
+                    </div>
+
+                </div>
+
+
+                <div class="status-box">
+
+                    <div class="status-label">
+
+                        📌 Current Status
+
+                    </div>
+
+                    <div class="status-value">
+
+                        {employeeStatus}
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </lightning-card>
+
+</template>

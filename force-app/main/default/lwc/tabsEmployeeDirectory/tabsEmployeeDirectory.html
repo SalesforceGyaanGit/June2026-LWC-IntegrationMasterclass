@@ -1,0 +1,236 @@
+<template>
+
+    <!-- ================= Portal Header ================= -->
+
+    <div class="portal-header">
+
+        <div class="header-left">
+
+            <h1>🏢 Employee Information Portal</h1>
+
+            <p>
+                Build Enterprise Applications using Lightning Web Components,
+                Apex, Lightning Data Service, UI Record API and Integrations.
+            </p>
+
+        </div>
+
+        <div class="course-card">
+
+            <div class="academy-name">
+                Salesforce Gyaan Academy
+            </div>
+
+            <div class="course-title">
+                LWC & Integration Masterclass
+            </div>
+
+            <div class="course-batch">
+                Batch 4
+            </div>
+
+        </div>
+
+    </div>
+
+
+
+    <!-- ================= Dashboard Cards ================= -->
+
+    <div class="dashboard-cards">
+
+        <div class="info-card">
+
+            <div class="card-icon">👨‍💼</div>
+
+            <div class="card-details">
+
+                <div class="card-number">302</div>
+
+                <div class="card-label">
+                    Employees
+                </div>
+
+            </div>
+
+        </div>
+
+        <div class="info-card">
+
+            <div class="card-icon">🏢</div>
+
+            <div class="card-details">
+
+                <div class="card-number">8</div>
+
+                <div class="card-label">
+                    Departments
+                </div>
+
+            </div>
+
+        </div>
+
+        <div class="info-card">
+
+            <div class="card-icon">📁</div>
+
+            <div class="card-details">
+
+                <div class="card-number">56</div>
+
+                <div class="card-label">
+                    Documents
+                </div>
+
+            </div>
+
+        </div>
+
+        <div class="info-card">
+
+            <div class="card-icon">⚡</div>
+
+            <div class="card-details">
+
+                <div class="card-number">18</div>
+
+                <div class="card-label">
+                    LWC Components
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+
+
+    <!-- ================= Main Tabs ================= -->
+
+    <lightning-tabset variant="scoped">
+
+        <lightning-tab label="👨‍💼 Employee Directory">
+
+            <c-hr-employee-client-pagination></c-hr-employee-client-pagination>
+
+        </lightning-tab>
+
+
+
+        <lightning-tab label="📄 Server Side Pagination">
+
+            <lightning-tabset variant="scoped">
+
+                <lightning-tab label="🚀 Lazy Loading">
+
+                    <c-hr-employee-lazy-loading></c-hr-employee-lazy-loading>
+
+                </lightning-tab>
+
+                <lightning-tab label="📑 Server Side Pagination">
+
+                    <c-hr-employee-server-side-pagination></c-hr-employee-server-side-pagination>
+
+                </lightning-tab>
+
+            </lightning-tabset>
+
+        </lightning-tab>
+
+
+
+        <lightning-tab label="🔄 Component Communication">
+
+            <lightning-tabset variant="scoped">
+
+                <lightning-tab label="Parent → Child">
+
+                    <c-hr-employee-information-parent></c-hr-employee-information-parent>
+
+                </lightning-tab>
+
+                <lightning-tab label="Child → Parent">
+
+                    <c-hr-parent-employee-rating></c-hr-parent-employee-rating>
+
+                </lightning-tab>
+
+                <lightning-tab label="Lightning Message Service">
+
+                    <c-hr-publisher-lms></c-hr-publisher-lms>
+
+                    <br/><hr/><br/>
+
+                    <c-hr-subscriber-lms></c-hr-subscriber-lms>
+
+                </lightning-tab>
+
+            </lightning-tabset>
+
+        </lightning-tab>
+
+
+
+        <lightning-tab label="⚙️ Lifecycle Hooks">
+
+            <c-hr-employee-lifecycle-demo></c-hr-employee-lifecycle-demo>
+
+        </lightning-tab>
+
+
+
+        <lightning-tab label="📦 LDS Playground">
+
+            <c-hr-l-d-s-playground></c-hr-l-d-s-playground>
+
+        </lightning-tab>
+
+
+
+        <lightning-tab label="🛠 UI Record API">
+
+            <lightning-tabset variant="scoped">
+
+                <lightning-tab label="createRecord">
+
+                    <c-hr-u-i-record-api-playground></c-hr-u-i-record-api-playground>
+
+                </lightning-tab>
+
+                <lightning-tab label="updateRecord">
+
+                    <c-hr-u-iupdate-record-api></c-hr-u-iupdate-record-api>
+
+                </lightning-tab>
+
+                <lightning-tab label="deleteRecord">
+
+                    <c-hr-u-i-delete-record-api></c-hr-u-i-delete-record-api>
+
+                </lightning-tab>
+
+            </lightning-tabset>
+
+        </lightning-tab>
+
+
+
+        <lightning-tab label="📊 Analytics Dashboard">
+
+            <c-hr-employee-analytics-dashboard></c-hr-employee-analytics-dashboard>
+
+        </lightning-tab>
+
+
+
+        <lightning-tab label="📁 Document Center">
+
+            <c-hr-employee-document-center></c-hr-employee-document-center>
+
+        </lightning-tab>
+
+    </lightning-tabset>
+
+</template>

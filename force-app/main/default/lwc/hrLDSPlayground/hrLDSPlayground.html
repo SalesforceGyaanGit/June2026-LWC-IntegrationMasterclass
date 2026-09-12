@@ -1,0 +1,323 @@
+<template>
+
+    <lightning-card>
+
+        <!-- ========================= HEADER ========================= -->
+
+        <div class="lds-header">
+
+            <div class="header-icon">
+                ⚡
+            </div>
+
+            <div>
+
+                <h1>Lightning Data Service Playground</h1>
+
+                <p>
+                    Learn Salesforce Lightning Data Service without writing Apex.
+                    Explore Record View Form, Record Edit Form and Record Form
+                    through an interactive playground.
+                </p>
+
+            </div>
+
+        </div>
+
+
+        <!-- ========================= FEATURE CARDS ========================= -->
+
+        <div class="feature-grid">
+
+            <div class="feature-card">
+
+                <div class="feature-icon">📄</div>
+
+                <h3>Record View Form</h3>
+
+                <p>
+                    Display record details in read-only mode.
+                </p>
+
+            </div>
+
+
+            <div class="feature-card">
+
+                <div class="feature-icon">✏️</div>
+
+                <h3>Record Edit Form</h3>
+
+                <p>
+                    Update records with built-in validation.
+                </p>
+
+            </div>
+
+
+            <div class="feature-card">
+
+                <div class="feature-icon">⚡</div>
+
+                <h3>Record Form</h3>
+
+                <p>
+                    Ready-made component for viewing and editing records.
+                </p>
+
+            </div>
+
+        </div>
+
+
+        <!-- ========================= CONFIGURATION ========================= -->
+
+        <div class="config-card">
+
+            <div class="section-heading">
+
+                <h2>Playground Configuration</h2>
+
+                <p>
+                    Configure the object, record and Lightning Data Service component.
+                </p>
+
+            </div>
+
+            <div class="config-grid">
+
+                <!-- Object -->
+
+                <lightning-combobox
+                    label="Select Object"
+                    value={selectedObject}
+                    options={objectOptions}
+                    onchange={handleObjectChange}>
+                </lightning-combobox>
+
+
+                <!-- Record Picker -->
+
+                <lightning-record-picker
+                    label="Search Record"
+                    object-api-name={selectedObject}
+                    onchange={handleRecordSelection}>
+                </lightning-record-picker>
+
+
+                <!-- Display Component -->
+
+                <lightning-combobox
+                    label="Display Component"
+                    value={selectedMode}
+                    options={modeOptions}
+                    onchange={handleModeChange}>
+                </lightning-combobox>
+
+            </div>
+
+        </div>
+
+
+        <!-- ========================= RECORD SECTION ========================= -->
+
+        <template if:true={recordId}>
+
+            <div class="record-card">
+
+                <div class="record-header">
+
+                    <div>
+
+                        <h2>Selected Record</h2>
+
+                        <p>
+                            Record rendered using
+                            <strong>Lightning Data Service</strong>.
+                        </p>
+
+                    </div>
+
+                </div>
+				                <!-- ========================= Record View Form ========================= -->
+
+                <template if:true={isViewForm}>
+
+                    <div class="mode-badge view-mode">
+
+                        📄 Record View Form
+
+                    </div>
+
+                    <lightning-record-view-form
+                        record-id={recordId}
+                        object-api-name={selectedObject}>
+
+                        <div class="slds-grid slds-wrap slds-gutters">
+
+                            <div class="slds-col slds-size_1-of-2">
+
+                                <lightning-output-field
+                                    field-name="Name">
+                                </lightning-output-field>
+
+                            </div>
+
+                            <div class="slds-col slds-size_1-of-2">
+
+                                <lightning-output-field
+                                    field-name="OwnerId">
+                                </lightning-output-field>
+
+                            </div>
+
+                            <div class="slds-col slds-size_1-of-2">
+
+                                <lightning-output-field
+                                    field-name="MyEmail__c">
+                                </lightning-output-field>
+
+                            </div>
+
+                        </div>
+
+                    </lightning-record-view-form>
+
+                </template>
+
+
+
+                <!-- ========================= Record Edit Form ========================= -->
+
+                <template if:true={isEditForm}>
+
+                    <div class="mode-badge edit-mode">
+
+                        ✏️ Record Edit Form
+
+                    </div>
+
+                    <lightning-record-edit-form
+
+                        record-id={recordId}
+
+                        object-api-name={selectedObject}
+
+                        onsuccess={handleSuccess}
+
+                        onsubmit={handleSubmit}>
+
+                        <div class="slds-grid slds-wrap slds-gutters">
+
+                            <div class="slds-col slds-size_1-of-2">
+
+                                <lightning-input-field
+                                    field-name="Name">
+                                </lightning-input-field>
+
+                            </div>
+
+                            <div class="slds-col slds-size_1-of-2">
+
+                                <lightning-input-field
+                                    field-name="OwnerId">
+                                </lightning-input-field>
+
+                            </div>
+
+                            <div class="slds-col slds-size_1-of-2">
+
+                                <lightning-input-field
+                                    field-name="MyEmail__c">
+                                </lightning-input-field>
+
+                            </div>
+
+                        </div>
+
+                        <div class="button-section">
+
+                            <lightning-button
+
+                                type="submit"
+
+                                variant="brand"
+
+                                icon-name="utility:save"
+
+                                label="Save Changes">
+
+                            </lightning-button>
+
+                        </div>
+
+                    </lightning-record-edit-form>
+
+                </template>
+
+
+
+                <!-- ========================= Record Form ========================= -->
+
+                <template if:true={isRecordForm}>
+
+                    <div class="mode-badge record-mode">
+
+                        ⚡ Lightning Record Form
+
+                    </div>
+
+                    <lightning-record-form
+
+                        record-id={recordId}
+
+                        object-api-name={selectedObject}
+
+                        mode="view"
+
+                        columns="2"
+
+                        fields={recordFormFields}>
+
+                    </lightning-record-form>
+
+                </template>
+
+            </div>
+
+        </template>
+
+
+
+        <!-- ========================= Empty State ========================= -->
+
+        <template if:false={recordId}>
+
+            <div class="empty-state">
+
+                <div class="empty-icon">
+
+                    📄
+
+                </div>
+
+                <h2>
+
+                    No Record Selected
+
+                </h2>
+
+                <p>
+
+                    Select an object, search a record and choose a display mode
+                    to explore Lightning Data Service.
+
+                </p>
+
+            </div>
+
+        </template>
+
+    </lightning-card>
+
+</template>

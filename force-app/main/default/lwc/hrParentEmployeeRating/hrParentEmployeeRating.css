@@ -1,0 +1,214 @@
+:host{
+    display:block;
+    background:#f4f6f9;
+}
+
+/*==================================================
+                    HEADER
+==================================================*/
+
+.ceo-header{
+
+    display:flex;
+    align-items:center;
+    gap:18px;
+
+    padding:20px 24px;
+
+    background:linear-gradient(135deg,#2E844A,#3BA755);
+
+    color:white;
+
+    border-radius:12px;
+
+    box-shadow:0 4px 12px rgba(0,0,0,.12);
+
+}
+
+.header-icon{
+
+    width:60px;
+    height:60px;
+
+    border-radius:50%;
+
+    background:rgba(255,255,255,.18);
+
+    display:flex;
+    justify-content:center;
+    align-items:center;
+
+    font-size:30px;
+}
+
+.ceo-header h1{
+
+    margin:0;
+
+    font-size:24px;
+
+    font-weight:700;
+
+}
+
+.ceo-header p{
+
+    margin-top:6px;
+
+    font-size:14px;
+
+    opacity:.95;
+
+}
+
+
+/*==================================================
+                FEEDBACK CARD
+==================================================*/
+
+.feedback-card{
+
+    margin:20px;
+
+    padding:22px;
+
+    background:white;
+
+    border-radius:12px;
+
+    box-shadow:0 3px 10px rgba(0,0,0,.08);
+
+}
+
+.feedback-card h2{
+
+    margin-bottom:18px;
+
+    color:#16325c;
+
+    font-size:20px;
+
+}
+
+
+/*==================================================
+                FEEDBACK GRID
+==================================================*/
+
+.feedback-grid{
+
+    display:grid;
+
+    grid-template-columns:repeat(2,1fr);
+
+    gap:18px;
+
+}
+
+.feedback-box{
+
+    background:#f7f9fb;
+
+    border-left:5px solid #2E844A;
+
+    border-radius:10px;
+
+    padding:20px;
+
+    transition:.25s;
+
+}
+
+.feedback-box:hover{
+
+    transform:translateY(-4px);
+
+    box-shadow:0 6px 14px rgba(0,0,0,.12);
+
+}
+
+.feedback-label{
+
+    color:#666;
+
+    font-size:13px;
+
+    font-weight:600;
+
+}
+
+.feedback-value{
+
+    margin-top:10px;
+
+    color:#2E844A;
+
+    font-size:24px;
+
+    font-weight:700;
+
+}
+
+
+/*==================================================
+            CHILD COMPONENT CARD
+==================================================*/
+
+.child-container{
+
+    margin:20px;
+
+    padding:22px;
+
+    background:white;
+
+    border-radius:12px;
+
+    box-shadow:0 3px 10px rgba(0,0,0,.08);
+
+}
+
+.child-container h2{
+
+    margin:0;
+
+    font-size:20px;
+
+    color:#16325c;
+
+}
+
+.child-container p{
+
+    margin-top:6px;
+
+    margin-bottom:18px;
+
+    color:#666;
+
+    font-size:14px;
+
+}
+
+
+/*==================================================
+                RESPONSIVE
+==================================================*/
+
+@media(max-width:768px){
+
+    .ceo-header{
+
+        flex-direction:column;
+
+        text-align:center;
+
+    }
+
+    .feedback-grid{
+
+        grid-template-columns:1fr;
+
+    }
+
+}

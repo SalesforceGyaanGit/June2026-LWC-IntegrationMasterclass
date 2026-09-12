@@ -1,41 +1,281 @@
 <template>
-    <lightning-card  title="Employee Dashboard">
-        <div class="container">
-            <h2> WELCOME TO SALESFORCE GYAAN ACADEMY</h2>
-            <hr>
-            <P><strong> Name: </strong> {empName} </P>
-            <P><strong> Designation: </strong> {empDesignation}</P>
-            <P><strong> Department: </strong>{department}</P>
-            <P><strong> Experience: </strong>{experience}</P>
-            <P><strong> Project: </strong> {project}</P>
-            <hr>
-            
-            <div>
-                <lightning-button variant="brand" label="Active" title="Primary action" onclick={handleActive} class="slds-m-left_x-small"></lightning-button>    &nbsp;&nbsp;
-                <lightning-button variant="brand" label="On Leave" title="Primary action" onclick={handleOnLeave} class="slds-m-left_x-small"></lightning-button>    
+
+    <lightning-card>
+
+        <!--================ HEADER =================-->
+
+        <div class="dashboard-header">
+
+            <div class="profile-icon">
+                👨‍💼
             </div>
-            
-            <hr>
-            
+
             <div>
-            <h3 class="align"> Employee Status </h3>
-            <template lwc:if = {isActive}>
-                <div class="active">
-                    <strong>Employee is Active</strong>
+
+                <h1>Employee Dashboard</h1>
+
+                <p>
+
+                    Welcome back,
+                    <span class="highlight">{empName}</span>
+
+                </p>
+
+                <p class="sub-text">
+
+                    Manage employee information and monitor current employment status.
+
+                </p>
+
+            </div>
+
+        </div>
+
+
+        <!--================ EMPLOYEE DETAILS =================-->
+
+        <div class="info-grid">
+
+            <!-- Profile Card -->
+
+            <div class="info-card">
+
+                <div class="card-title">
+
+                    👤 Employee Profile
+
                 </div>
-            </template>
-            <template lwc:elseif = {isOnLeave}>
-                <div class="leave">
-                    <strong>Employee is on Leave</strong>
+
+                <div class="info-row">
+
+                    <span>Name</span>
+
+                    <strong>{empName}</strong>
+
                 </div>
+
+                <div class="info-row">
+
+                    <span>Designation</span>
+
+                    <strong>{empDesignation}</strong>
+
+                </div>
+
+                <div class="info-row">
+
+                    <span>Department</span>
+
+                    <strong>{department}</strong>
+
+                </div>
+
+            </div>
+
+
+            <!-- Summary Card -->
+
+            <div class="info-card">
+
+                <div class="card-title">
+
+                    📊 Employment Summary
+
+                </div>
+
+                <div class="info-row">
+
+                    <span>Experience</span>
+
+                    <strong>{experience}</strong>
+
+                </div>
+
+                <div class="info-row">
+
+                    <span>Project</span>
+
+                    <strong>{project}</strong>
+
+                </div>
+
+                <div class="info-row">
+
+                    <span>Organization</span>
+
+                    <strong>Salesforce Gyaan Academy</strong>
+
+                </div>
+
+            </div>
+
+        </div>
+
+
+        <!--================ ACTIONS =================-->
+
+        <div class="button-card">
+
+            <h2>Update Employee Status</h2>
+
+            <p>
+
+                Click any button below to simulate employee status.
+
+            </p>
+
+            <div class="button-group">
+
+                <lightning-button
+
+                    label="Mark Active"
+
+                    variant="brand"
+
+                    icon-name="utility:success"
+
+                    onclick={handleActive}>
+
+                </lightning-button>
+
+                <lightning-button
+
+                    label="On Leave"
+
+                    variant="neutral"
+
+                    icon-name="utility:date_input"
+
+                    onclick={handleOnLeave}
+
+                    class="slds-m-left_medium">
+
+                </lightning-button>
+
+            </div>
+
+        </div>
+		        <!--================ EMPLOYEE STATUS =================-->
+
+        <div class="status-card">
+
+            <div class="status-header">
+
+                <h2>Current Employee Status</h2>
+
+                <p>
+
+                    The status below changes dynamically based on the selected action.
+
+                </p>
+
+            </div>
+
+            <template lwc:if={isActive}>
+
+                <div class="status-box active-status">
+
+                    <div class="status-icon">
+                        ✅
+                    </div>
+
+                    <div>
+
+                        <h3>Employee is Active</h3>
+
+                        <p>
+
+                            Employee is currently working and available for assigned tasks.
+
+                        </p>
+
+                    </div>
+
+                </div>
+
             </template>
+
+            <template lwc:elseif={isOnLeave}>
+
+                <div class="status-box leave-status">
+
+                    <div class="status-icon">
+                        🌴
+                    </div>
+
+                    <div>
+
+                        <h3>Employee is On Leave</h3>
+
+                        <p>
+
+                            Employee is temporarily unavailable and currently on leave.
+
+                        </p>
+
+                    </div>
+
+                </div>
+
+            </template>
+
             <template lwc:else>
-                <div class="inactive">
-                    <strong>Employee is Inactive</strong>
+
+                <div class="status-box inactive-status">
+
+                    <div class="status-icon">
+                        ❌
+                    </div>
+
+                    <div>
+
+                        <h3>Employee is Inactive</h3>
+
+                        <p>
+
+                            Employee is currently inactive in the organization.
+
+                        </p>
+
+                    </div>
+
                 </div>
+
             </template>
+
         </div>
+
+
+        <!--================ QUICK INFO =================-->
+
+        <div class="footer-grid">
+
+            <div class="footer-card">
+
+                <span>👨‍💼 Employee</span>
+
+                <strong>{empName}</strong>
+
+            </div>
+
+            <div class="footer-card">
+
+                <span>🏢 Department</span>
+
+                <strong>{department}</strong>
+
+            </div>
+
+            <div class="footer-card">
+
+                <span>📁 Project</span>
+
+                <strong>{project}</strong>
+
+            </div>
+
         </div>
-        
+
     </lightning-card>
+
 </template>

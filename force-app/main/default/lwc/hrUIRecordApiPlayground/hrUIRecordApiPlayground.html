@@ -1,0 +1,225 @@
+<template>
+
+    <lightning-card>
+
+        <!--================ HEADER =================-->
+
+        <div class="api-header">
+
+            <div class="header-icon">
+                🚀
+            </div>
+
+            <div>
+
+                <h1>Lightning UI Record API Playground</h1>
+
+                <p>
+
+                    Build custom Salesforce User Interfaces using
+                    <span class="highlight">createRecord()</span>
+                    without writing
+                    <span class="highlight">Apex</span>.
+
+                </p>
+
+            </div>
+
+        </div>
+
+
+        <!--================ FEATURE CARDS =================-->
+
+        <div class="feature-grid">
+
+            <div class="feature-card">
+
+                <div class="feature-icon">➕</div>
+
+                <h3>Create Record</h3>
+
+                <p>Create Salesforce records using UI Record API.</p>
+
+            </div>
+
+            <div class="feature-card">
+
+                <div class="feature-icon">⚡</div>
+
+                <h3>No Apex Required</h3>
+
+                <p>Perform DML operations completely from JavaScript.</p>
+
+            </div>
+
+            <div class="feature-card">
+
+                <div class="feature-icon">☁️</div>
+
+                <h3>Lightning Experience</h3>
+
+                <p>Modern Salesforce development using UI APIs.</p>
+
+            </div>
+
+        </div>
+
+
+        <!--================ FORM CARD =================-->
+
+        <div class="form-card">
+
+            <div class="section-heading">
+
+                <h2>Employee Registration Form</h2>
+
+                <p>
+
+                    Enter employee information and click
+                    <strong>Create Employee</strong>
+                    to insert a new record.
+
+                </p>
+
+            </div>
+
+            <div class="slds-grid slds-wrap slds-gutters">
+
+                <div class="slds-col slds-size_1-of-1 slds-large-size_1-of-2">
+
+                    <lightning-input
+                        label="Employee Name"
+                        data-field="Name"
+                        value={name}
+                        onchange={handleChange}
+                        required>
+
+                    </lightning-input>
+
+                </div>
+
+                <div class="slds-col slds-size_1-of-1 slds-large-size_1-of-2">
+
+                    <lightning-input
+                        type="email"
+                        label="Employee Email"
+                        data-field="MyEmail__c"
+                        value={email}
+                        onchange={handleChange}>
+
+                    </lightning-input>
+
+                </div>
+
+                <div class="slds-col slds-size_1-of-1 slds-large-size_1-of-2">
+
+                    <lightning-input
+                        type="tel"
+                        label="Employee Phone"
+                        data-field="Employee_Phone__c"
+                        value={phone}
+                        onchange={handleChange}>
+
+                    </lightning-input>
+
+                </div>
+
+                <div class="slds-col slds-size_1-of-1 slds-large-size_1-of-2">
+
+                    <lightning-input
+                        label="Employee Department"
+                        data-field="Department__c"
+                        value={department}
+                        onchange={handleChange}>
+
+                    </lightning-input>
+
+                </div>
+				                <div class="slds-col slds-size_1-of-1 slds-large-size_1-of-2">
+
+                    <lightning-input
+                        label="Employee Designation"
+                        data-field="Designation__c"
+                        value={designation}
+                        onchange={handleChange}>
+
+                    </lightning-input>
+
+                </div>
+
+                <div class="slds-col slds-size_1-of-1 slds-large-size_1-of-2">
+
+                    <lightning-input
+                        type="number"
+                        label="Employee Salary"
+                        data-field="Salary__c"
+                        value={salary}
+                        onchange={handleChange}>
+
+                    </lightning-input>
+
+                </div>
+
+            </div>
+
+
+            <!--================ ACTION BUTTONS =================-->
+
+            <div class="button-section">
+
+                <lightning-button
+                    label="Create Employee"
+                    variant="brand"
+                    icon-name="utility:add"
+                    onclick={createEmployee}
+                    class="action-btn">
+
+                </lightning-button>
+
+                <lightning-button
+                    label="Reset Form"
+                    variant="neutral"
+                    icon-name="utility:refresh"
+                    onclick={resetForm}
+                    class="slds-m-left_small">
+
+                </lightning-button>
+
+            </div>
+
+        </div>
+
+
+        <!--================ FOOTER INFO =================-->
+
+        <div class="info-footer">
+
+            <div class="info-item">
+
+                <span>⚡ API Used</span>
+
+                <strong>createRecord()</strong>
+
+            </div>
+
+            <div class="info-item">
+
+                <span>📦 Module</span>
+
+                <strong>lightning/uiRecordApi</strong>
+
+            </div>
+
+            <div class="info-item">
+
+                <span>🚀 Technology</span>
+
+                <strong>Lightning UI Record API</strong>
+
+            </div>
+
+        </div>
+
+    </lightning-card>
+
+</template>

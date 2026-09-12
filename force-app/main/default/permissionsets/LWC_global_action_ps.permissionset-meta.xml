@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<PermissionSet xmlns="http://soap.sforce.com/2006/04/metadata">
+    <applicationVisibilities>
+        <application>BudgetPartner</application>
+        <visible>true</visible>
+    </applicationVisibilities>
+    <flowAccesses>
+        <enabled>true</enabled>
+        <flow>Create_Recurring_Task_using_global_action</flow>
+    </flowAccesses>
+    <hasActivationRequired>false</hasActivationRequired>
+    <label>LWC global action ps</label>
+</PermissionSet>

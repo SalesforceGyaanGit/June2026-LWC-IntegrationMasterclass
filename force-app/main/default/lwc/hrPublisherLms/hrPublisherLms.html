@@ -1,0 +1,88 @@
+<template>
+
+    <lightning-card>
+
+        <!-- ================= HEADER ================= -->
+
+        <div class="publisher-header">
+
+            <div class="header-icon">
+                📡
+            </div>
+
+            <div>
+
+                <h1>Leave Status Publisher</h1>
+
+                <p>
+                    Publish employee leave status using Lightning Message Service (LMS).
+                </p>
+
+            </div>
+
+        </div>
+
+
+        <!-- ================= MESSAGE CARD ================= -->
+
+        <div class="publisher-card">
+
+            <h2>Broadcast Employee Status</h2>
+
+            <p>
+                Enter employee details below and publish the status. All subscribed
+                components will instantly receive the message.
+            </p>
+
+
+            <div class="form-grid">
+
+                <lightning-input
+
+                    label="Employee Name"
+
+                    type="text"
+
+                    value={employeeName}
+
+                    onchange={handleNameChange}>
+
+                </lightning-input>
+
+
+                <lightning-combobox
+
+                    label="Employee Status"
+
+                    value={status}
+
+                    options={statusOptions}
+
+                    onchange={handleStatusChange}>
+
+                </lightning-combobox>
+
+            </div>
+
+
+            <div class="button-section">
+
+                <lightning-button
+
+                    variant="brand"
+
+                    icon-name="utility:broadcast"
+
+                    label="Publish Status"
+
+                    onclick={handlePublish}>
+
+                </lightning-button>
+
+            </div>
+
+        </div>
+
+    </lightning-card>
+
+</template>
