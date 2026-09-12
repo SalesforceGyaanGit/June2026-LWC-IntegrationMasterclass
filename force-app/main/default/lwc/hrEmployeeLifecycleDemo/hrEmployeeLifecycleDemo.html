@@ -1,0 +1,104 @@
+<template>
+
+    <lightning-card>
+
+        <!-- ================= HEADER ================= -->
+
+        <div class="lifecycle-header">
+
+            <div class="header-icon">
+                🔄
+            </div>
+
+            <div>
+
+                <h1>Lifecycle Hooks Playground</h1>
+
+                <p>
+                    Observe how Lightning Web Components are created, rendered,
+                    updated and destroyed using Lifecycle Hooks.
+                </p>
+
+            </div>
+
+        </div>
+
+
+        <!-- ================= CONTROL PANEL ================= -->
+
+        <div class="control-card">
+
+            <h2>Lifecycle Controller</h2>
+
+            <p>
+                Click the button below to create or remove the child component.
+                Watch the browser console to understand the execution order of
+                lifecycle hooks.
+            </p>
+
+            <div class="button-section">
+
+                <lightning-button
+
+                    label={buttonLabel}
+
+                    variant="brand"
+
+                    icon-name="utility:refresh"
+
+                    onclick={toggleCard}>
+
+                </lightning-button>
+
+            </div>
+
+        </div>
+
+
+        <!-- ================= STATUS ================= -->
+
+        <div class="status-card">
+
+            <div class="status-label">
+
+                Component Status
+
+            </div>
+
+            <div class="status-value">
+
+                {showCard}
+
+            </div>
+
+        </div>
+
+
+        <!-- ================= DEMO ================= -->
+
+        <template if:true={showCard}>
+
+            <div class="demo-card">
+
+                <h2>
+
+                    Employee Lifecycle Component
+
+                </h2>
+
+                <p>
+
+                    Child component is currently active.
+
+                </p>
+
+                <c-hr-employee-card-lifecycle-demo>
+                </c-hr-employee-card-lifecycle-demo>
+
+            </div>
+
+        </template>
+
+    </lightning-card>
+
+</template>

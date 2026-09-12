@@ -6,6 +6,7 @@ import {refreshApex} from '@salesforce/apex';
 import EMPLOYEEDETAILS_OBJECT from '@salesforce/schema/Employee_Detail__c';
 import DEPARTMENT_FIELD from '@salesforce/schema/Employee_Detail__c.Employee_Department__c';
 import { getObjectInfo,getPicklistValues } from 'lightning/uiObjectInfoApi';
+import { NavigationMixin } from "lightning/navigation";
 
 const COLUMNS = [
     
@@ -14,9 +15,15 @@ const COLUMNS = [
     {label: 'Emp Phone', fieldName: 'Employee_Phone__c'},
     {label: 'Emp City', fieldName: 'Employee_City__c'},
     {label: 'Emp Email', fieldName: 'Employee_Email__c'},
-    {label: 'Emp Department', fieldName: 'Employee_Department__c'}
+    {label: 'Emp Department', fieldName: 'Employee_Department__c'},
+    {label: 'Action', type:'button', initialWidth:130,
+        typeAttributes:{
+            label:'View',name:'View',iconName:'utility:preview',iconPosition:'left',variant:'brand'
+        }
+    }
 ];
-export default class EmpWireAsProperty_Day3 extends LightningElement {
+
+export default class EmpWireAsProperty_Day3 extends NavigationMixin(LightningElement) {
     tableColumns = COLUMNS;  // datatable columns
     selectedDept = '';  
     employeeRecs =[] ;  // because it is going to hold N number of records
@@ -143,6 +150,36 @@ export default class EmpWireAsProperty_Day3 extends LightningElement {
     }
     showToast(title,message,variant){
         this.dispatchEvent(new ShowToastEvent({title,message,variant}));            
+    }
+
+    handleRowAction(event){
+        console.log('handleRowAction method is clicked');
+        const actionName = event.detail.action.name;
+        console.log('actionName is ==',actionName );
+
+        const selectedEmployee = event.detail.row;
+        console.log('Record Name is ',selectedEmployee.Employee_Name__c);
+
+        if(actionName === 'View'){
+            // call the method which will  navigate the record
+            console.log('In If block');
+            this.naviagateToEmployeeRecord(selectedEmployee.Id);
+        }
+        else{
+            alert('Wrong Action');
+        }
+    }
+
+    naviagateToEmployeeRecord(recordId){
+        console.log('record id received is == ',recordId);
+        this[NavigationMixin.Navigate]({
+            type:'standard__recordPage',
+            attributes:{
+                recordId:recordId,
+                objectApiName:'Employee_Detail__c',   //Optional
+                actionName: 'view'
+            }
+        });
     }
 
 }

@@ -1,0 +1,83 @@
+<template>
+
+    <lightning-card>
+
+        <!-- ================= Header ================= -->
+
+        <div class="ceo-header">
+
+            <div class="header-icon">
+                👨‍💼
+            </div>
+
+            <div>
+
+                <h1>CEO Feedback Portal</h1>
+
+                <p>
+                    Receive employee ratings and reviews from the Child Component
+                    using Custom Events.
+                </p>
+
+            </div>
+
+        </div>
+
+
+        <!-- ================= Feedback Summary ================= -->
+
+        <div class="feedback-card">
+
+            <h2>Latest Employee Feedback</h2>
+
+            <div class="feedback-grid">
+
+                <div class="feedback-box">
+
+                    <div class="feedback-label">
+                        ⭐ Employee Rating
+                    </div>
+
+                    <div class="feedback-value">
+                        {empRatingReceived}
+                    </div>
+
+                </div>
+
+
+                <div class="feedback-box">
+
+                    <div class="feedback-label">
+                        💬 Employee Review
+                    </div>
+
+                    <div class="feedback-value">
+                        {empReviewReceived}
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+
+        <!-- ================= Child Component ================= -->
+
+        <div class="child-container">
+
+            <h2>Employee Feedback Form</h2>
+
+            <p>
+                Submit rating and review from the child component.
+            </p>
+
+            <c-hr-child-employee-rating
+                onempreviewandrating={handleFeedback}>
+            </c-hr-child-employee-rating>
+
+        </div>
+
+    </lightning-card>
+
+</template>

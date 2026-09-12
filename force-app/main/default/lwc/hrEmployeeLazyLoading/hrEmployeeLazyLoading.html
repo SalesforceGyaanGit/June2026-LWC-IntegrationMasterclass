@@ -1,0 +1,56 @@
+<template>
+    <lightning-card title="Employee Directory" icon-name="standard:employee">
+
+        <div class="table-container" onscroll={handleScroll}>
+
+            <table class="slds-table slds-table_bordered slds-table_cell-buffer slds-table_striped">
+
+                <thead>
+                    <tr>
+                        <th>Emp Code</th>
+                        <th>Employee Name</th>
+                        <th>Phone</th>
+                        <th>City</th>
+                        <th>Email</th>
+                        <th>Department</th>
+                    </tr>
+                </thead>
+
+                <tbody>
+
+                    <template for:each={employees} for:item="emp">
+                        <tr key={emp.Id}>
+
+                            <td>{emp.Name}</td>
+                            <td>{emp.Employee_Name__c}</td>
+                            <td>{emp.Employee_Phone__c}</td>
+                            <td>{emp.Employee_City__c}</td>
+                            <td>{emp.Employee_Email__c}</td>
+                            <td>{emp.Employee_Department__c}</td>
+
+                        </tr>
+                    </template>
+
+                </tbody>
+
+            </table>
+
+            <template if:true={isLoading}>
+                <div class="spinner">
+                    <lightning-spinner
+                        size="small"
+                        alternative-text="Loading">
+                    </lightning-spinner>
+                </div>
+            </template>
+
+            <template if:false={hasMoreData}>
+                <div class="end-message">
+                    All Employees Loaded
+                </div>
+            </template>
+
+        </div>
+
+    </lightning-card>
+</template>

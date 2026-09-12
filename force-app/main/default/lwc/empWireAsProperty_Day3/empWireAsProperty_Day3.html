@@ -1,6 +1,7 @@
 <template>
     <lightning-card title="Employee Directory" icon-name="standard:employee">
 
+        <!-- Select Department -->
         <div class="slds-p-around_medium">
             <div class="slds-grid slds-grid_align-spread slds-grid_vertical-align-end">
                 <div class="slds-size_1-of-3">
@@ -19,6 +20,7 @@
             
         </div>
        
+        <!-- Employee Data table-->
         <div class="slds-p-horizontal_medium slds-p-bottom_small">
             
             <template lwc:if ={employeeRecs}>
@@ -27,8 +29,10 @@
                     key-field="Id"
                     data={employeeRecs}
                     columns={tableColumns}
-                    hide-checkbox-column
+                    hide-checkbox-column = "false"
                     show-row-number-column
+                    onrowaction={handleRowAction}
+
                 >
                 </lightning-datatable>
             </div>

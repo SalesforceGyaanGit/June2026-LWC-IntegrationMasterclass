@@ -1,0 +1,266 @@
+<template>
+
+    <lightning-card>
+
+        <!--================ HEADER =================-->
+
+        <div class="document-header">
+
+            <div class="header-icon">
+                📁
+            </div>
+
+            <div>
+
+                <h1>Employee Document Center</h1>
+
+                <p>
+
+                    Securely upload employee documents to
+
+                    <span class="highlight">Salesforce Files</span>
+
+                    using
+
+                    <span class="highlight">Lightning File Upload</span>.
+
+                </p>
+
+            </div>
+
+        </div>
+
+
+        <!--================ FEATURE CARDS =================-->
+
+        <div class="feature-grid">
+
+            <div class="feature-card">
+
+                <div class="feature-icon">
+                    👤
+                </div>
+
+                <h3>Select Employee</h3>
+
+                <p>
+
+                    Search the employee whose documents you want to upload.
+
+                </p>
+
+            </div>
+
+            <div class="feature-card">
+
+                <div class="feature-icon">
+                    📄
+                </div>
+
+                <h3>Choose Document</h3>
+
+                <p>
+
+                    Select the document category before uploading.
+
+                </p>
+
+            </div>
+
+            <div class="feature-card">
+
+                <div class="feature-icon">
+                    ☁️
+                </div>
+
+                <h3>Upload Files</h3>
+
+                <p>
+
+                    Upload multiple employee documents securely.
+
+                </p>
+
+            </div>
+
+        </div>
+
+
+        <!--================ SEARCH CARD =================-->
+
+        <div class="search-card">
+
+            <div class="section-heading">
+
+                <h2>Employee Document Upload</h2>
+
+                <p>
+
+                    Select the employee and document category.
+
+                </p>
+
+            </div>
+
+            <div class="slds-grid slds-wrap slds-gutters">
+
+                <div class="slds-col slds-size_1-of-1 slds-large-size_1-of-2">
+
+                    <lightning-record-picker
+
+                        label="Search Employee"
+
+                        placeholder="Search Employee"
+
+                        object-api-name="Employee_Detail__c"
+
+                        onchange={handleRecordSelection}>
+
+                    </lightning-record-picker>
+
+                </div>
+
+                <div class="slds-col slds-size_1-of-1 slds-large-size_1-of-2">
+
+                    <lightning-combobox
+
+                        label="Document Type"
+
+                        value={selectedDocument}
+
+                        options={documentOptions}
+
+                        onchange={handleDocumentType}>
+
+                    </lightning-combobox>
+
+                </div>
+
+            </div>
+
+        </div>
+		        <template if:true={recordId}>
+
+            <!--================ UPLOAD CARD =================-->
+
+            <div class="upload-card">
+
+                <div class="section-heading">
+
+                    <h2>Upload Employee Documents</h2>
+
+                    <p>
+
+                        Upload one or more documents directly to Salesforce Files.
+
+                    </p>
+
+                </div>
+
+                <div class="upload-zone">
+
+                    <lightning-file-upload
+
+                        label="Choose Files"
+
+                        name="EmployeeUploader"
+
+                        record-id={recordId}
+
+                        accept={acceptedFormats}
+
+                        multiple
+
+                        onuploadfinished={handleUploadFinished}>
+
+                    </lightning-file-upload>
+
+                </div>
+
+            </div>
+
+        </template>
+
+
+        <!--================ GUIDELINES =================-->
+
+        <div class="guideline-grid">
+
+            <div class="guide-card">
+
+                <div class="guide-icon">📄</div>
+
+                <h3>Supported Files</h3>
+
+                <p>
+
+                    PDF, DOCX, PNG, JPG and other supported Salesforce formats.
+
+                </p>
+
+            </div>
+
+            <div class="guide-card">
+
+                <div class="guide-icon">🔒</div>
+
+                <h3>Secure Storage</h3>
+
+                <p>
+
+                    Files are stored securely in Salesforce Files.
+
+                </p>
+
+            </div>
+
+            <div class="guide-card">
+
+                <div class="guide-icon">☁️</div>
+
+                <h3>Multiple Upload</h3>
+
+                <p>
+
+                    Upload multiple documents in a single operation.
+
+                </p>
+
+            </div>
+
+        </div>
+
+
+        <!--================ FOOTER =================-->
+
+        <div class="info-footer">
+
+            <div class="info-item">
+
+                <span>📁 Storage</span>
+
+                <strong>Salesforce Files</strong>
+
+            </div>
+
+            <div class="info-item">
+
+                <span>⚡ Component</span>
+
+                <strong>lightning-file-upload</strong>
+
+            </div>
+
+            <div class="info-item">
+
+                <span>🔒 Upload Type</span>
+
+                <strong>Secure Upload</strong>
+
+            </div>
+
+        </div>
+
+    </lightning-card>
+
+</template>

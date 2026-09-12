@@ -1,0 +1,14 @@
+<template>
+    <lightning-card title="HR REVIEW BOX">
+        <div class="slds-p-around_medium">
+            <lightning-input type="number" label="Enter Employee Rating" min="1" max="5" onchange={handleRatingChange}></lightning-input>
+            <br/>
+            <lightning-textarea label="Employee Review" required="true" onchange={handleEmpReview}></lightning-textarea>
+            <hr>
+        </div>
+        <div class="slds-p-around_medium">
+            <lightning-button variant="Brand" label="Submit Review" onclick={handleSubmitReviewRating}></lightning-button>
+        </div>
+
+    </lightning-card>
+</template>

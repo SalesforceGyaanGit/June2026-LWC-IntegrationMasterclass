@@ -1,0 +1,304 @@
+<template>
+
+    <lightning-card>
+
+        <!--================ HEADER =================-->
+
+        <div class="update-header">
+
+            <div class="header-icon">
+                ✏️
+            </div>
+
+            <div>
+
+                <h1>Lightning UI Record API Playground</h1>
+
+                <p>
+
+                    Update existing Salesforce records using
+                    <span class="highlight">updateRecord()</span>
+                    without writing
+                    <span class="highlight">Apex</span>.
+
+                </p>
+
+            </div>
+
+        </div>
+
+
+        <!--================ FEATURE CARDS =================-->
+
+        <div class="feature-grid">
+
+            <div class="feature-card">
+
+                <div class="feature-icon">🔍</div>
+
+                <h3>Search Record</h3>
+
+                <p>Select an existing employee from Salesforce.</p>
+
+            </div>
+
+            <div class="feature-card">
+
+                <div class="feature-icon">✏️</div>
+
+                <h3>Edit Information</h3>
+
+                <p>Modify employee details with a custom UI.</p>
+
+            </div>
+
+            <div class="feature-card">
+
+                <div class="feature-icon">💾</div>
+
+                <h3>Update Record</h3>
+
+                <p>Save changes instantly using updateRecord().</p>
+
+            </div>
+
+        </div>
+
+
+        <!--================ SEARCH CARD =================-->
+
+        <div class="search-card">
+
+            <div class="section-heading">
+
+                <h2>Employee Lookup</h2>
+
+                <p>
+
+                    Search an existing employee before updating the record.
+
+                </p>
+
+            </div>
+
+            <lightning-record-picker
+
+                label="Search Employee"
+
+                placeholder="Search Employee"
+
+                object-api-name="Employee_Detail__c"
+
+                onchange={handleRecordSelection}>
+
+            </lightning-record-picker>
+
+        </div>
+
+
+        <!--================ UPDATE FORM =================-->
+
+        <template if:true={recordId}>
+
+            <div class="form-card">
+
+                <div class="section-heading">
+
+                    <h2>Edit Employee Information</h2>
+
+                    <p>
+
+                        Modify the required fields and click
+                        <strong>Update Employee</strong>.
+
+                    </p>
+
+                </div>
+
+                <div class="slds-grid slds-wrap slds-gutters">
+
+                    <div class="slds-col slds-size_1-of-1 slds-large-size_1-of-2">
+
+                        <lightning-input
+
+                            label="Employee Name"
+
+                            data-field="Employee_Name__c"
+
+                            value={name}
+
+                            onchange={handleChange}
+
+                            required>
+
+                        </lightning-input>
+
+                    </div>
+
+                    <div class="slds-col slds-size_1-of-1 slds-large-size_1-of-2">
+
+                        <lightning-input
+
+                            type="email"
+
+                            label="Employee Email"
+
+                            data-field="MyEmail__c"
+
+                            value={email}
+
+                            onchange={handleChange}>
+
+                        </lightning-input>
+
+                    </div>
+
+                    <div class="slds-col slds-size_1-of-1 slds-large-size_1-of-2">
+
+                        <lightning-input
+
+                            type="tel"
+
+                            label="Employee Phone"
+
+                            data-field="Employee_Phone__c"
+
+                            value={phone}
+
+                            onchange={handleChange}>
+
+                        </lightning-input>
+
+                    </div>
+
+                    <div class="slds-col slds-size_1-of-1 slds-large-size_1-of-2">
+
+                        <lightning-input
+
+                            label="Employee Department"
+
+                            data-field="Department__c"
+
+                            value={department}
+
+                            onchange={handleChange}>
+
+                        </lightning-input>
+
+                    </div>
+					                    <div class="slds-col slds-size_1-of-1 slds-large-size_1-of-2">
+
+                        <lightning-input
+                            label="Employee Designation"
+                            data-field="Designation__c"
+                            value={designation}
+                            onchange={handleChange}>
+                        </lightning-input>
+
+                    </div>
+
+                    <div class="slds-col slds-size_1-of-1 slds-large-size_1-of-2">
+
+                        <lightning-input
+                            type="number"
+                            label="Employee Salary"
+                            data-field="Salary__c"
+                            value={salary}
+                            onchange={handleChange}>
+                        </lightning-input>
+
+                    </div>
+
+                </div>
+
+
+                <!--================ ACTION BUTTONS =================-->
+
+                <div class="button-section">
+
+                    <lightning-button
+                        label="Update Employee"
+                        variant="brand"
+                        icon-name="utility:save"
+                        onclick={updateEmployee}
+                        class="action-btn">
+
+                    </lightning-button>
+
+                    <lightning-button
+                        label="Reset Form"
+                        variant="neutral"
+                        icon-name="utility:refresh"
+                        onclick={resetForm}
+                        class="slds-m-left_small">
+
+                    </lightning-button>
+
+                </div>
+
+            </div>
+
+        </template>
+
+
+        <!--================ EMPTY STATE =================-->
+
+        <template if:false={recordId}>
+
+            <div class="empty-state">
+
+                <div class="empty-icon">
+                    🔍
+                </div>
+
+                <h2>
+
+                    Search an Employee
+
+                </h2>
+
+                <p>
+
+                    Select an employee from the record picker to
+                    view and update employee information.
+
+                </p>
+
+            </div>
+
+        </template>
+
+
+        <!--================ FOOTER =================-->
+
+        <div class="info-footer">
+
+            <div class="info-item">
+
+                <span>⚡ API Used</span>
+
+                <strong>updateRecord()</strong>
+
+            </div>
+
+            <div class="info-item">
+
+                <span>📦 Module</span>
+
+                <strong>lightning/uiRecordApi</strong>
+
+            </div>
+
+            <div class="info-item">
+
+                <span>🎯 Purpose</span>
+
+                <strong>Update Existing Records</strong>
+
+            </div>
+
+        </div>
+
+    </lightning-card>
+
+</template>

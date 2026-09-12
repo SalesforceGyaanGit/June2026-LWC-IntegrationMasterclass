@@ -1,0 +1,15 @@
+<template>
+    <lightning-card title="Employee Card">
+        <div class="slds-p-around_medium">
+            <p>
+                <strong> Name: </strong> {employeeName}
+            </p>
+            <p>
+                <strong> Designation: </strong> {designation}
+            </p>
+            <br/>
+
+            <lightning-button label="Promote Employee" variant="success" onclick={promoteEmployee}></lightning-button>
+        </div>
+    </lightning-card>
+</template>
